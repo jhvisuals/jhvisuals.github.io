@@ -112,47 +112,75 @@
   // Function to generate gallery items
   function generateGalleryItems(totalImages) {
     const container = document.getElementById('gallery-container');
-    
-    for (let i = 1; i < totalImages; i++) {
-        const colDiv = document.createElement('div');
-        colDiv.className = 'col-xl-4 col-lg-4 col-md-6 ';
-        
-        const galleryItemDiv = document.createElement('div');
-        galleryItemDiv.className = 'gallery-item h-100';
-        
-        const img = document.createElement('img');
-        img.src = `S/${i}.jpg`;
-        img.className = 'img-fluid';
-        img.alt = `Gallery ${i + 1}`;
-        
-        const galleryLinksDiv = document.createElement('div');
-        galleryLinksDiv.className = 'gallery-links d-flex align-items-center justify-content-center';
-        
-        const previewLink = document.createElement('a');
-        previewLink.href = `S/${i}.jpg`;
-        previewLink.title = `Gallery ${i + 1}`;
-        previewLink.className = 'glightbox preview-link';
-        previewLink.innerHTML = '<i class="bi bi-arrows-angle-expand"></i>';
-        
-        const detailsLink = document.createElement('a');
-        detailsLink.href = 'gallery-single.html';
-        detailsLink.className = 'details-link';
-        detailsLink.innerHTML = '<i class="bi bi-link-45deg"></i>';
-        
-        galleryLinksDiv.appendChild(previewLink);
-        galleryLinksDiv.appendChild(detailsLink);
-        
-        galleryItemDiv.appendChild(img);
-        galleryItemDiv.appendChild(galleryLinksDiv);
-        
-        colDiv.appendChild(galleryItemDiv);
-        
-        container.appendChild(colDiv);
-    }
-}
 
-// Generate 100 gallery items
-generateGalleryItems(100);
+    for (let i = 1; i <= totalImages; i++) {  // Include totalImages
+      const colDiv = document.createElement('div');
+      colDiv.className = 'col-xl-4 col-lg-4 col-md-6';
+
+      const galleryItemDiv = document.createElement('div');
+      galleryItemDiv.className = 'gallery-item h-100';
+
+      const img = document.createElement('img');
+      img.src = `S/${i}.jpg`;
+      img.className = 'img-fluid';
+      img.alt = `Gallery ${i}`;
+
+      const galleryLinksDiv = document.createElement('div');
+      galleryLinksDiv.className = 'gallery-links d-flex align-items-center justify-content-center';
+
+      const previewLink = document.createElement('a');
+      previewLink.href = `S/${i}.jpg`;
+      previewLink.title = `Gallery ${i}`;
+      previewLink.className = 'glightbox preview-link';
+      previewLink.innerHTML = '<i class="bi bi-arrows-angle-expand"></i>';
+
+      const detailsLink = document.createElement('a');
+      detailsLink.href = 'gallery-single.html';
+      detailsLink.className = 'details-link';
+      detailsLink.innerHTML = '<i class="bi bi-link-45deg"></i>';
+
+      galleryLinksDiv.appendChild(previewLink);
+      galleryLinksDiv.appendChild(detailsLink);
+
+      galleryItemDiv.appendChild(img);
+      galleryItemDiv.appendChild(galleryLinksDiv);
+
+      colDiv.appendChild(galleryItemDiv);
+
+      container.appendChild(colDiv);
+
+      // Add different paragraphs after specific images
+      if (i === 21) {
+        const paragraphBR = document.createElement('p');
+        paragraphBR.style.padding = '80px'
+        container.appendChild(paragraphBR);
+
+      } else if (i === 30) {
+        addParagraph(container, 'Through a sophisticated fusion of photographic techniques, this series delves into the intricate tapestry of existence, encouraging a quest for meaning within the dance of opposites. It invites viewers to appreciate the profound beauty in the simplicity of black and white, offering a deep, rational meditation on the transient and the timeless facets of life.');
+      } else if (i === 45) {
+        addParagraph(container, 'Inspired by the rich cultural heritage of Morocco, adding layers of abstraction and depth. It captures the essence of Moroccan mystique, where ancient wisdom and contemporary vision merge, revealing the eternal rhythms that shape our understanding of existence.');
+      } else if (i === 69) {
+        addParagraph(container, 'Simplicity in tools, complexity in thought. With an iPhone 6, iPhone 8, and Nikon Coolpix P510');
+      }
+    }
+  }
+
+  // Helper function to add a paragraph
+  function addParagraph(container, text) {
+    const paragraphDiv = document.createElement('div');
+    paragraphDiv.className = 'col-12';  // Full-width column
+    const paragraph = document.createElement('p');
+    paragraph.textContent = text;
+    paragraph.style.textAlign = 'center';  // Center align the paragraph
+    paragraph.style.margin = '20px 0';  // Add margin for spacing
+    paragraph.style.padding = '80px'
+    paragraphDiv.appendChild(paragraph);
+    container.appendChild(paragraphDiv);
+  }
+
+  // Generate 100 gallery items
+  generateGalleryItems(99);
+
 
 
   /**
@@ -185,8 +213,10 @@ generateGalleryItems(100);
  * Initialize the hero carousel
  */
   const heroCarousel = new bootstrap.Carousel(document.querySelector('#heroCarousel'), {
-    interval: 5000, // Change the slide every 5 seconds
-    ride: 'carousel'
+    interval: 2000,
+    ride: 'carousel',
+    pause: 'hover'
   });
+
 
 })();
