@@ -154,6 +154,7 @@
 // Generate 100 gallery items
 generateGalleryItems(100);
 
+
   /**
    * Initiate glightbox
    */
