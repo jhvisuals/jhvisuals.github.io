@@ -12,9 +12,10 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Cardo",  sans-serif;
-  --nav-font: "Inter",  sans-serif;
+  --default-font: 'Arial' ,'Helvetica', sans-serif;
+  --heading-font: 'Arial' ,'Helvetica', sans-serif;
+  --paragraph-font: 'Arial' ,'Helvetica', sans-serif;
+  letter-spacing: .20em;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -725,9 +726,9 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 60px 0;
-  scroll-margin-top: 100px;
-  overflow: clip;
+  /* padding: 60px 0; */
+  /* scroll-margin-top: 100px; */
+  /* overflow: clip; */
 }
 
 @media (max-width: 1199px) {
